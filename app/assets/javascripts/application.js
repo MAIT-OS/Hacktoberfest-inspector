@@ -20,23 +20,22 @@
 var a;
 var valid_hack_array=[];
 var msg;
-var html=""
+var html="";
+
 function checkfromgithub(val) {
 	msg="";
-	// var html="";
 	valid_hack_array=[];
 	if(val.trim()==0){
 		msg='Username cant be blank'
 		show_msg(msg);
 	}
-	//hundredeir
 	else{
 		$.ajax({
 			url : "https://api.github.com/search/issues?q=author%3A"+val+"+type%3Apr",
 			dataType : "jsonp",
 			success : function ( returndata ) {
 				$.each( returndata.data.items, function ( i, item ) {
-					if( moment(returndata.data.items[i].created_at).isAfter(moment('01/10/2017','DD/MM/YYYY')) )
+					if( moment(returndata.data.items[i].created_at).isAfter(moment('01/10/2017','DD/MM/YYYY')) && moment(returndata.data.items[i].created_at).isBefore(moment('1/11/2017','DD/MM/YYYY')))
 						valid_hack_array.push(returndata.data.items[i]);
 				// html+=	'<div class="col-sm-12">'+returndata.data.items[i].created_at+'</div>'+'<br>'
 				});
@@ -79,3 +78,14 @@ function show_msg(m){
 	console.log(html);
 	$('#pr_data').html(html);
 }
+
+$(document).on('turbolinks:load', function() {
+	$('#github_username').keypress(function (e) {
+		var key = e.which;
+		if(key == 13)
+		{
+			console.log('hiankush');
+			checkfromgithub($(this).val());
+		}
+	});
+});
