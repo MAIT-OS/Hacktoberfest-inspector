@@ -14,3 +14,11 @@
  *= require_self
  */
 @import "bootstrap";
+
+*{
+	box-sizing:border-box;
+	max-width: 100%;
+}
+.request_msg{
+	margin:2% 5% 2% 5%;
+}

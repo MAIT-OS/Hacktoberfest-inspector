@@ -1,13 +1,20 @@
-<div class="container text-center" style="height:60%;width:100%;display: flex;justify-content: center;align-content: center;flex-wrap: wrap">
+<div class="container text-center" style="">
 	<div class="row">
-			<h1 class="col-sm-12" style="display: flex;justify-content: center;align-items: center;">Home#index</h1>
-			<div class="form-group col-sm-12">
-				<input type="text" class="form-control" id="github_username" placeholder="type your username">
-				<input type="submit" class="btn btn-primary" value="Check" onclick="checkfromgithub($('#github_username').val())">
-			</div>
+		<h1 class="col-sm-12" style="font-family: Squealer;font-size: 5em;margin: 10% 0 10% 0;">Hacktober-Inspector</h1>
+		<div class="form-group row col-sm-12">
+			<input type="text" class="form-control col-sm-6  ml-auto" id="github_username" placeholder="Your GitHub Username">
+			<input type="submit" class="btn btn-primary col-sm-1 mr-auto" value="Check" onclick="checkfromgithub($('#github_username').val())">
+		</div>
 	</div>
 </div>
-<div class="row" style="height:35%;width:100%;display: flex;justify-content: center;flex-wrap: wrap">
-	<div id="result" class="col-sm-12" style="display: flex;justify-content: center;flex-wrap: wrap">
+<div class="row">
+	<h5 id="result" class="col-sm-10 col-md-6 ml-auto mr-auto" style="text-align: center;color:white;font-family: Squealer;font-size: 2em;margin: 1% 0 3% 0;"></h5>
+	<div class="col-sm-12"></div>
+	<h6 id="alert" class="col-sm-10 col-md-6 ml-auto mr-auto" style="text-align: center;color:white;font-family: Squealer;font-size: 2em;margin: 1% 0 3% 0;"></h6>
+</div>
+<div class="row" style="">
+	<div id="result" class="col-md-6 ml-auto mr-auto">
+		<div id="pr_data" style="background-color: white;width: 100%;text-align: center;display: flex;flex-wrap: wrap;align-items: center;text-align: center;">
+		</div>
 	</div>
 </div>
