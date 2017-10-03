@@ -1,9 +1,13 @@
-<div class="container text-center" style="height:100%;width:100%;display: flex;justify-content: center;align-content: center;flex-wrap: wrap">
+<div class="container text-center" style="height:60%;width:100%;display: flex;justify-content: center;align-content: center;flex-wrap: wrap">
 	<div class="row">
 			<h1 class="col-sm-12" style="display: flex;justify-content: center;align-items: center;">Home#index</h1>
 			<div class="form-group col-sm-12">
 				<input type="text" class="form-control" id="github_username" placeholder="type your username">
-				<input type="submit" class="btn btn-primary" value="Check">
+				<input type="submit" class="btn btn-primary" value="Check" onclick="checkfromgithub($('#github_username').val())">
 			</div>
+	</div>
+</div>
+<div class="row" style="height:35%;width:100%;display: flex;justify-content: center;flex-wrap: wrap">
+	<div id="result" class="col-sm-12" style="display: flex;justify-content: center;flex-wrap: wrap">
 	</div>
 </div>
