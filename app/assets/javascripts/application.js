@@ -19,40 +19,73 @@
 
 var a;
 var valid_hack_array=[];
+var msg;
+var html="";
+
 function checkfromgithub(val) {
-	var html="";
+	msg="";
 	valid_hack_array=[];
 	if(val.trim()==0){
-		//append something
-		return;
+		msg='Username cant be blank'
+		show_msg(msg);
 	}
-	//hundredeir
 	else{
 		$.ajax({
 			url : "https://api.github.com/search/issues?q=author%3A"+val+"+type%3Apr",
 			dataType : "jsonp",
 			success : function ( returndata ) {
-				// console.log(returndata.data.items)
 				$.each( returndata.data.items, function ( i, item ) {
-					if( moment(returndata.data.items[i].created_at).isAfter(moment('01/10/2017','DD/MM/YYYY')) )
+					if( moment(returndata.data.items[i].created_at).isAfter(moment('01/10/2017','DD/MM/YYYY')) && moment(returndata.data.items[i].created_at).isBefore(moment('1/11/2017','DD/MM/YYYY')))
 						valid_hack_array.push(returndata.data.items[i]);
-				html+=	'<div class="col-sm-12">'+returndata.data.items[i].created_at+'</div>'+'<br>'
+				// html+=	'<div class="col-sm-12">'+returndata.data.items[i].created_at+'</div>'+'<br>'
 				});
-				$( '#result' ).html(html);
-						console.log(valid_hack_array);
+				show_msg(msg);
+				show_results();
+				// $( '#result' ).html(html);
+				console.log(valid_hack_array);
 			}
 		});
 	}
 }
+function show_results(){
+	c=valid_hack_array.length;
+	if(c<1){
+		msg="It's not to late to start now :)"
+		$( '#result' ).html(valid_hack_array.length+'/4');
+		html="";
+		return show_msg(msg);
+	}
+	else if(c>=4){
+		msg="Congrats,You Completed Hacktoberfest ^_^ !!!"
+		$( '#result' ).html(valid_hack_array.length+'/4');
+		return show_msg(msg);
+	}
+	else if(c<4){
+		msg="Good Going ^_^ !"
+	}
+	html='<div class="request_msg">';
+	$( '#result' ).html(valid_hack_array.length+'/4');
+	valid_hack_array.forEach(function(item,id) {
+		html+="*<a href="+item.html_url+" target='_blank'>"+"Pull Request"+id+"</a><br>"
+	});
+	html+='</div>'
+	console.log(html);
+	show_msg(msg);
+}
 
-//function get_watched_repos() 
-//{
-//   
-//  $( '#result' ).html( "" );
-//  var html = "<h2>Repos I'm watching</h2>";
-//  
-  
-//  
-//}
+function show_msg(m){
+	$('#alert').html(m);
+	console.log(html);
+	$('#pr_data').html(html);
+}
 
-//}); //close document ready
+$(document).on('turbolinks:load', function() {
+	$('#github_username').keypress(function (e) {
+		var key = e.which;
+		if(key == 13)
+		{
+			console.log('hiankush');
+			checkfromgithub($(this).val());
+		}
+	});
+});
