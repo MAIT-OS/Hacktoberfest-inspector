@@ -3,12 +3,23 @@
   <head>
     <title>Hacktoberfest</title>
     <%= csrf_meta_tags %>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="height: 100vh;
+  	background:
+		-webkit-linear-gradient(45deg, hsl(30, 89%, 55%) 0%, hsla(167, 91%, 42%, 0) 70%),
+		-webkit-linear-gradient(315deg, hsla(193, 94%, 50%, 1) 10%, hsla(193, 94%, 50%, 0) 80%),
+		-webkit-linear-gradient(225deg, hsla(202, 92%, 45%, 1) 10%, hsla(202, 92%, 45%, 0) 80%),
+		-webkit-linear-gradient(135deg, hsla(337, 100%, 41%, 1) 100%, hsla(337, 100%, 41%, 0) 70%);
+	background:
+		linear-gradient(45deg, hsl(30, 89%, 55%) 0%, hsla(167, 91%, 42%, 0) 70%),
+		linear-gradient(135deg, hsla(193, 94%, 50%, 1) 10%, hsla(193, 94%, 50%, 0) 80%),
+		linear-gradient(225deg, hsla(202, 92%, 45%, 1) 10%, hsla(202, 92%, 45%, 0) 80%),
+		linear-gradient(315deg, hsla(337, 100%, 41%, 1) 100%, hsla(337, 100%, 41%, 0) 70%);
+">
     <%= yield %>
   </body>
 </html>
