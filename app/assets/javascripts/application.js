@@ -50,7 +50,7 @@ function checkfromgithub(val) {
 function show_results(){
 	c=valid_hack_array.length;
 	if(c<1){
-		msg="It's not to late to start now :)"
+		msg="It's not too late to start now :)"
 		$( '#result' ).html(valid_hack_array.length+'/4');
 		html="";
 		return show_msg(msg);
